@@ -1,0 +1,201 @@
+
+{
+    "fsid": "b60f36a0-1a2d-4b66-8cf5-c0a83773b59d",
+    "health": {
+        "checks": {
+            "OBJECT_MISPLACED": {
+                "severity": "HEALTH_WARN",
+                "summary": {
+                    "message": "14676028/21361936 objects misplaced (68.702%)"
+                }
+            },
+            "PG_DEGRADED": {
+                "severity": "HEALTH_WARN",
+                "summary": {
+                    "message": "Degraded data redundancy: 30/21361936 objects degraded (0.000%), 894 pgs unclean"
+                }
+            }
+        },
+        "status": "HEALTH_WARN",
+        "summary": [
+            {
+                "severity": "HEALTH_WARN",
+                "summary": "'ceph health' JSON format has changed in luminous. If you see this your monitoring system is scraping the wrong fields. Disable this with 'mon health preluminous compat warning = false'"
+            }
+        ],
+        "overall_status": "HEALTH_WARN"
+    },
+    "election_epoch": 256,
+    "quorum": [
+        0,
+        1,
+        2
+    ],
+    "quorum_names": [
+        "kbbceph01",
+        "kbbceph02",
+        "kbbceph03"
+    ],
+    "monmap": {
+        "epoch": 3,
+        "fsid": "b60f36a0-1a2d-4b66-8cf5-c0a83773b59d",
+        "modified": "2017-08-07 15:55:54.699325",
+        "created": "2017-06-19 14:01:27.080746",
+        "features": {
+            "persistent": [
+                "kraken",
+                "luminous"
+            ],
+            "optional": []
+        },
+        "mons": [
+            {
+                "rank": 0,
+                "name": "kbbceph01",
+                "addr": "192.168.234.101:6789/0",
+                "public_addr": "192.168.234.101:6789/0"
+            },
+            {
+                "rank": 1,
+                "name": "kbbceph02",
+                "addr": "192.168.234.102:6789/0",
+                "public_addr": "192.168.234.102:6789/0"
+            },
+            {
+                "rank": 2,
+                "name": "kbbceph03",
+                "addr": "192.168.234.103:6789/0",
+                "public_addr": "192.168.234.103:6789/0"
+            }
+        ]
+    },
+    "osdmap": {
+        "osdmap": {
+            "epoch": 39916,
+            "num_osds": 42,
+            "num_up_osds": 42,
+            "num_in_osds": 42,
+            "full": false,
+            "nearfull": false,
+            "num_remapped_pgs": 894
+        }
+    },
+    "pgmap": {
+        "pgs_by_state": [
+            {
+                "state_name": "active+clean",
+                "count": 2578
+            },
+            {
+                "state_name": "active+remapped+backfill_wait",
+                "count": 874
+            },
+            {
+                "state_name": "active+remapped+backfilling",
+                "count": 20
+            }
+        ],
+        "num_pgs": 3472,
+        "num_pools": 8,
+        "num_objects": 10680968,
+        "data_bytes": 44667976177029,
+        "bytes_used": 90197567434752,
+        "bytes_avail": 186689284485120,
+        "bytes_total": 276886851919872,
+        "degraded_objects": 30,
+        "degraded_total": 21361936,
+        "degraded_ratio": 0.000001,
+        "misplaced_objects": 14676028,
+        "misplaced_total": 21361936,
+        "misplaced_ratio": 0.687018,
+        "recovering_objects_per_sec": 63,
+        "recovering_bytes_per_sec": 266817002,
+        "recovering_keys_per_sec": 0,
+        "num_objects_recovered": 768,
+        "num_bytes_recovered": 3215536128,
+        "num_keys_recovered": 0,
+        "read_bytes_sec": 2283964,
+        "write_bytes_sec": 87955315,
+        "read_op_per_sec": 26,
+        "write_op_per_sec": 1075
+    },
+    "fsmap": {
+        "epoch": 124,
+        "id": 3,
+        "up": 1,
+        "in": 1,
+        "max": 1,
+        "by_rank": [
+            {
+                "filesystem_id": 3,
+                "rank": 0,
+                "name": "kbbceph04",
+                "status": "up:active"
+            }
+        ],
+        "up:standby": 2
+    },
+    "mgrmap": {
+        "epoch": 1511,
+        "active_gid": 22804845,
+        "active_name": "kbbceph02",
+        "active_addr": "192.168.234.102:6813/2070",
+        "available": true,
+        "standbys": [
+            {
+                "gid": 22907002,
+                "name": "kbbceph01",
+                "available_modules": [
+                    "balancer",
+                    "dashboard",
+                    "influx",
+                    "localpool",
+                    "prometheus",
+                    "restful",
+                    "selftest",
+                    "status",
+                    "zabbix"
+                ]
+            },
+            {
+                "gid": 26030822,
+                "name": "kbbceph03",
+                "available_modules": [
+                    "balancer",
+                    "dashboard",
+                    "influx",
+                    "localpool",
+                    "prometheus",
+                    "restful",
+                    "selftest",
+                    "status",
+                    "zabbix"
+                ]
+            }
+        ],
+        "modules": [
+            "dashboard",
+            "restful",
+            "status"
+        ],
+        "available_modules": [
+            "balancer",
+            "dashboard",
+            "influx",
+            "localpool",
+            "prometheus",
+            "restful",
+            "selftest",
+            "status",
+            "zabbix"
+        ],
+        "services": {
+            "dashboard": "http://KBBCeph02:7000/"
+        }
+    },
+    "servicemap": {
+        "epoch": 0,
+        "modified": "0.000000",
+        "services": {}
+    }
+}

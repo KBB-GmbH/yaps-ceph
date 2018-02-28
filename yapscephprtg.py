@@ -58,6 +58,21 @@ def main(sJson):
         'HEALTH_OK' : 0, 'HEALTH_WARN' : 1, 'HEALTH_ERR' : 2 
     }[ j['health']['status'] ]
     e = max(e,h)
+
+
+    # we see if we already learned about the situation and 
+    # should raise the ceph warning to prtg err in next place
+    unhandled = 0
+    if e == 1:
+        ws = j['health']['checks']
+        unhandled = len(ws)
+        for k,c in ws.items():
+            if c['severity'] == 'HEALTH_WARN' and k in ['OBJECT_MISPLACED','PG_DEGRADED']:
+                unhandled -= 1
+                m += c['summary']['message']+';'
+        if unhandled==0:
+            e = 0
+
     if e > 0:
         m += 'situation occured'
     channels.append( { 
