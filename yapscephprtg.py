@@ -97,7 +97,10 @@ def main(sJson):
     } )
 
     for c in ['bytes_used',
-            'read_bytes_sec','write_bytes_sec','read_op_per_sec','write_op_per_sec']:
+            'read_bytes_sec','write_bytes_sec','read_op_per_sec','write_op_per_sec',
+            'recovering_bytes_per_sec','recovering_objects_per_sec',
+            'num_objects','misplaced_objects','degraded_objects'
+        ]:
         channels.append( {
             'channel': c,
             'value': j['pgmap'].get(c,0)
