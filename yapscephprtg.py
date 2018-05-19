@@ -93,7 +93,7 @@ def main(sJson):
     )
     channels.append( {
         'channel': 'bytes_avail',
-        'value': i
+        'value': -i
     } )
 
     for c in ['bytes_used',
