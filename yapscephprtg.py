@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 # Copyright 2017 Kulturveranstaltungen des Bundes in Berlin GmbH
 #
@@ -14,7 +14,7 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-
+from __future__ import division
 
 import argparse
 import json
@@ -93,7 +93,7 @@ def main(sJson):
     )
     channels.append( {
         'channel': 'bytes_avail',
-        'value': i
+        'value': -i
     } )
 
     for c in ['bytes_used',
@@ -117,11 +117,6 @@ def main(sJson):
     
     return
 
-
-
-
-
-
 argparserbase = argparse.ArgumentParser()
 argparserbase.add_argument("--json-file", help="a file to parse instead of reading `ceph -s`")
 args = argparserbase.parse_args()
@@ -132,5 +127,3 @@ else:
     sJson = _exec([CEPH_BIN,'-s','--format=json'])
 
 main(sJson)
-
-
