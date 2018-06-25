@@ -67,7 +67,7 @@ def main(sJson):
         ws = j['health']['checks']
         unhandled = len(ws)
         for k,c in ws.items():
-            if c['severity'] == 'HEALTH_WARN' and k in ['OBJECT_MISPLACED','PG_DEGRADED']:
+            if c['severity'] == 'HEALTH_WARN' : 
                 unhandled -= 1
                 m += c['summary']['message']+';'
         if unhandled==0:
