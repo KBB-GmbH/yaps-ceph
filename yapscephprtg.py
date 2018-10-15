@@ -29,7 +29,11 @@ import sys
 # so install in /var/prtg/scriptsxml/ and check executable flag
 # 
 # assumes ceph access - check read permissions to ceph.conf
+# 
+# in prtg channel 'status' indicates 
+# 0=OK 1=WARNING 2=ERROR
 #
+
 
 
 CEPH_BIN = '/usr/bin/ceph'
