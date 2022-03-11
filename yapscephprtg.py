@@ -148,6 +148,36 @@ def main(sJson):
 
 
 
+
+    if not (args.json_file):
+        j2 = json.loads(_exec([CEPH_BIN,'osd','df','--format=json']))
+        maxUsed = 0
+        maxUsedOSD = 0
+	
+        for osd in j2['nodes']:
+            if osd['utilization'] > maxUsed:
+                maxUsed = osd['utilization']
+                maxUsedOSD = osd['id']
+
+        channels.append( {
+            'channel' : 'maxUsed',
+            'value' : maxUsed,
+            'Unit': 'Percent',
+            'LimitMode' : 1,
+            'LimitMaxWarning' : 80,
+            'LimitMaxError' : 90
+        } )
+
+        channels.append( {
+            'channel' : 'maxUsedOSD',
+            'value' : maxUsedOSD
+        } )
+
+
+	
+	
+	
+
     print( json.dumps( {'prtg' : {
         'error' : e,
         'text' : m,
