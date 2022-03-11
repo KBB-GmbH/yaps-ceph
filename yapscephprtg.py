@@ -86,7 +86,7 @@ def main(sJson):
         'LimitMaxError' : 2
     } )
 
-    i = j['osdmap']['osdmap']['num_osds'] - j['osdmap']['osdmap']['num_up_osds']
+    i = j['osdmap']['num_osds'] - j['osdmap']['num_up_osds']
     channels.append( {
         'channel' : 'missing_osds',
         'value' : i,
