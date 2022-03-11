@@ -161,6 +161,8 @@ def main(sJson):
 
         channels.append( {
             'channel' : 'maxUsed',
+            'Float' : 1,
+            'DecimalMode' : 2,
             'value' : maxUsed,
             'Unit': 'Percent',
             'LimitMode' : 1,
