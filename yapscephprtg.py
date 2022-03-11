@@ -129,7 +129,7 @@ def main(sJson):
         channels.append( {
             'channel': c,
             'value': j['pgmap'].get(c,0),
-            'Unit': 'BytesBandwith',
+            'Unit': 'BytesBandwidth',
             'SpeedSize' : 'Mega'	
         } )
 
