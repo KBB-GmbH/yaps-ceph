@@ -81,27 +81,62 @@ def main(sJson):
         m += 'situation occured'
     channels.append( { 
         'channel' : 'status', 
-        'value' : h
+        'value' : h,
+        'LimitMode' : 1,
+        'LimitMaxWarning' : 1,
+        'LimitMaxError' : 2
     } )
 
-    i = j['osdmap']['osdmap']['num_osds'] - j['osdmap']['osdmap']['num_up_osds']
+    i = j['osdmap']['num_osds'] - j['osdmap']['num_up_osds']
     channels.append( {
         'channel' : 'missing_osds',
         'value' : i,
     } )
 
-    
+    channels.append( {
+        'channel': 'bytes_used',
+        'value':  j['pgmap'].get('bytes_used',0),
+        'Unit': 'BytesDisk',
+        'VolumeSize' : 'Tera'
+    } )
+
+
     i = int( 
       j['pgmap'].get('bytes_total',0) * CLUSTER_MAX_FILL 
       - j['pgmap'].get('bytes_used',0)
     )
     channels.append( {
         'channel': 'bytes_avail',
-        'value': i
+        'value': i,
+        'Unit': 'BytesDisk',
+        'VolumeSize' : 'Tera'
     } )
 
-    for c in ['bytes_used',
-            'read_bytes_sec','write_bytes_sec','read_op_per_sec','write_op_per_sec',
+    i = int( 
+      ( j['pgmap'].get('bytes_used',0) / j['pgmap'].get('bytes_total',0)  ) * 100
+    )
+    channels.append( {
+        'channel': 'used',
+        'value': i,
+	'Unit': 'Percent',
+        'LimitMode' : 1,
+        'LimitMaxWarning' : 80,
+        'LimitMaxError' : 90
+        
+    } )
+
+
+
+    for c in ['read_bytes_sec','write_bytes_sec']:
+        channels.append( {
+            'channel': c,
+            'value': j['pgmap'].get(c,0),
+            'Unit': 'BytesBandwidth',
+            'SpeedSize' : 'Mega'	
+        } )
+
+
+    for c in ['read_op_per_sec','write_op_per_sec',
             'recovering_bytes_per_sec','recovering_objects_per_sec',
             'num_objects','misplaced_objects','degraded_objects'
         ]:
