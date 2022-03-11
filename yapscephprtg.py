@@ -82,6 +82,7 @@ def main(sJson):
     channels.append( { 
         'channel' : 'status', 
         'value' : h,
+        'LimitMode' : 1,
         'LimitMaxWarning' : 1,
         'LimitMaxError' : 2
     } )
@@ -118,6 +119,7 @@ def main(sJson):
         'channel': 'used',
         'value': i,
 	'Unit': 'Percent',
+        'LimitMode' : 1,
         'LimitMaxWarning' : 80,
         'LimitMaxError' : 90
         
