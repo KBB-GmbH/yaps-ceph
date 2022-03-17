@@ -83,8 +83,8 @@ def main(sJson):
         'channel' : 'status', 
         'value' : h,
         'LimitMode' : 1,
-        'LimitMaxWarning' : 1,
-        'LimitMaxError' : 2
+        'LimitMaxWarning' : 0.5,
+        'LimitMaxError' : 1.5
     } )
 
     i = j['osdmap']['num_osds'] - j['osdmap']['num_up_osds']
